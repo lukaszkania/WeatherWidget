@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import CITIES_API_URL from './constants/API_URL';
 import DropDown from './components/DropDown/DropDown';
+import WeatherData from './components/WeatherData/WeatherData';
 
 class App extends Component {
   state = {
@@ -79,25 +80,29 @@ class App extends Component {
   render() {
     // GETTING TITLE OF BUTTON COMPONENT
     let titleOfButtonComponent = ""
-     if (this.state.activeCityName === "") {
+    if (this.state.activeCityName === "") {
       titleOfButtonComponent =
         <em>
           Please select city name...
         </em>
-    }else {
+    } else {
       titleOfButtonComponent = this.state.activeCityName
     }
 
     // MAIN RETURN
     return (
-      <Fragment>
+      <div className="main-container">
         <DropdownButton id="dropdown-basic-button" title={titleOfButtonComponent}>
           {this.state.cities.map(cityObject => {
             return <DropDown key={cityObject.id} cityObject={cityObject} onClick={this.onClick.bind(this, cityObject.id)} />
           })}
         </DropdownButton>
-
-      </Fragment >
+        <div className="weather-container">
+          {this.state.weather.map((weatherObject, index) => {
+            return <WeatherData key={index} weather={weatherObject} />
+          })}
+        </div>
+      </div>
     );
   }
 }
