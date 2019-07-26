@@ -5,6 +5,13 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import CITIES_API_URL from './constants/API_URL';
 import DropDown from './components/DropDown/DropDown';
 import WeatherTodayData from './components/WeatherTodayData/WeatherTodayData';
+import WeatherOtherDayData from './components/WeatherOtherDayData/WeatherOtherDayData';
+import { daysOfWeek } from './constants/MONTHS_AND_DAYS';
+import rain_s_cloudy from './img/Assets/rain_s_cloudy.png';
+import cloudy from './img/Assets/cloudy.png';
+import rain_light from './img/Assets/rain_light.png';
+import partly_cloudy from './img/Assets/partly_cloudy.png';
+import sunny from './img/Assets/sunny.png';
 
 class App extends Component {
   state = {
@@ -78,22 +85,48 @@ class App extends Component {
     localStorage.setItem("cityName", this.state.cities[event - 1].name)
   }
 
-  isDayIsToday(dateFromApi) {
-    const today = new Date()
+  getNameOfTheDay(dateFromApi) {
     const year = dateFromApi.slice(0, 4)
     const month = dateFromApi.slice(5, 7)
     const day = dateFromApi.slice(8, 10)
-    const apiDate = new Date(year, month, day)
 
-    if (today.getDate() === apiDate.getDate() && today.getMonth() === apiDate.getMonth() && today.getFullYear() === apiDate.getFullYear()) {
-      console.log('prawda')
-      return true
-    } else {
-      console.log('falsz')
+    const date = new Date(year, month, day)
+    return daysOfWeek[date.getDay()]
 
-      return false
+  }
+
+  displayAssets(weatherTypeInfo) {
+    if (weatherTypeInfo === "RainAndCloudy") {
+      return (
+        <img src={rain_s_cloudy} alt="Rain and Cloudly"></img>
+      )
+    } else if (weatherTypeInfo === "RainLight") {
+      return (
+        <img src={rain_light} alt="Rain Light"></img>
+      )
+    }
+    else if (weatherTypeInfo === "Cloudy") {
+      return (
+        <img src={cloudy} alt="Cloudy"></img>
+      )
+    }
+    else if (weatherTypeInfo === "Sunny") {
+      return (
+        <img src={sunny} alt="Sunny"></img>
+      )
+    }
+    else if (weatherTypeInfo === "PartlyCloudy") {
+      return (
+        <img src={partly_cloudy} alt="Partly Cloudly"></img>
+      )
     }
   }
+
+
+  changeCelciusToFar(temperatureInC) {
+    return Math.round(9 / 5 * temperatureInC + 32)
+  }
+
 
   render() {
     // GETTING TITLE OF BUTTON COMPONENT
@@ -117,15 +150,25 @@ class App extends Component {
         </DropdownButton>
         <div className="weather-container">
           {this.state.weather.map((weatherObject, index) => {
-            if (this.isDayIsToday(weatherObject.date)) {
+            if (index === 0) {
               return (
-            <div className="actual-today-weather-container">
-              <WeatherTodayData key={index} weather={weatherObject} />
-              </div>
+                <div className="actual-today-weather-container">
+                  <WeatherTodayData key={index} weather={weatherObject} changeCelciusToFar={this.changeCelciusToFar} displayAssets={this.displayAssets} getNameOfTheDay={this.getNameOfTheDay} />
+                </div>
               )
-            } else {
-              return <div> </div>
             }
+          })}
+        </div>
+        <div className="rest-of-week-weather-container">
+          {this.state.weather.map((weatherObject, index) => {
+            let isToday;
+            if (index === 0) {
+              isToday = true
+            }
+            return (
+              <WeatherOtherDayData key={index} isToday={isToday} weather={weatherObject} changeCelciusToFar={this.changeCelciusToFar} displayAssets={this.displayAssets} getNameOfTheDay={this.getNameOfTheDay} />
+            )
+
           })}
         </div>
       </div>

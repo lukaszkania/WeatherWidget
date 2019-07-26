@@ -1,12 +1,25 @@
+*,
+:before,
+:after {
+    box-sizing: border-box; // habit
+    margin: 0;
+    padding: 0;
+}
+
 .main-container {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    flex-wrap: nowrap;
+    justify-content: center;
     align-items: stretch;
     align-content: stretch;
+    width: 80%;
+    border: 1px gray solid;
+
 
     .dropdown {
+        margin: 0 10px;
+
         button {
             color: black;
             background-color: white;
@@ -61,39 +74,35 @@
     }
 
     .weather-container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        align-items: baseline;
-        align-content: stretch;
+        margin: 0 10px;
 
-        .weather {
+        .actual-today-weather-container {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             flex-wrap: nowrap;
             justify-content: flex-start;
-            align-items: baseline;
+            align-items: center;
             align-content: stretch;
 
-            .today-weather-container {
+            .temperature-and-asset-container {
+
                 display: flex;
                 flex-direction: row;
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
                 justify-content: flex-start;
                 align-items: stretch;
                 align-content: stretch;
 
-                .temperature-container {
-                    p {
-                        color: gray;
-                        margin: 0;
-                    }
+                p {}
 
-                    .asset-and-temperature-container {
+                .temperature-and-asset {
+
+                    p {}
+
+                    .img-and-p {
                         display: flex;
                         flex-direction: row;
-                        flex-wrap: wrap;
+                        flex-wrap: nowrap;
                         justify-content: flex-start;
                         align-items: stretch;
                         align-content: stretch;
@@ -101,34 +110,47 @@
                         img {}
 
                         p {
-                            color: black;
-                            font-size: 30px;
-
-                            sup {
-                                color: gray;
-
-                            }
+                            margin-bottom: 0;
                         }
                     }
                 }
-
-                .details-container {
-                    p {}
-                }
             }
 
-            .weather-container {
-                width: 10%;
+            .details-container {
+                margin: 15vh 0 0 15vw;
+
+                p {}
+            }
+        }
+    }
+
+    .rest-of-week-weather-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
+        align-content: stretch;
+
+        .other-day-weather {
+            margin: 10px 40px 0 10px;
+            text-align: center;
+
+            p {}
+
+            img {}
+
+            .temperatures {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: nowrap;
-                justify-content: flex-start;
-                align-items: baseline;
+                justify-content: center;
+                align-items: center;
                 align-content: stretch;
 
-                p {}
-
-                img {}
+                p {
+                    sub {}
+                }
             }
         }
     }
