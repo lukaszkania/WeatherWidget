@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import './App.scss';
 import axios from 'axios';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import CITIES_API_URL from './constants/API_URL';
 import DropDown from './components/DropDown/DropDown';
-import WeatherData from './components/WeatherData/WeatherData';
+import WeatherTodayData from './components/WeatherTodayData/WeatherTodayData';
 
 class App extends Component {
   state = {
@@ -77,6 +78,23 @@ class App extends Component {
     localStorage.setItem("cityName", this.state.cities[event - 1].name)
   }
 
+  isDayIsToday(dateFromApi) {
+    const today = new Date()
+    const year = dateFromApi.slice(0, 4)
+    const month = dateFromApi.slice(5, 7)
+    const day = dateFromApi.slice(8, 10)
+    const apiDate = new Date(year, month, day)
+
+    if (today.getDate() === apiDate.getDate() && today.getMonth() === apiDate.getMonth() && today.getFullYear() === apiDate.getFullYear()) {
+      console.log('prawda')
+      return true
+    } else {
+      console.log('falsz')
+
+      return false
+    }
+  }
+
   render() {
     // GETTING TITLE OF BUTTON COMPONENT
     let titleOfButtonComponent = ""
@@ -99,7 +117,15 @@ class App extends Component {
         </DropdownButton>
         <div className="weather-container">
           {this.state.weather.map((weatherObject, index) => {
-            return <WeatherData key={index} weather={weatherObject} />
+            if (this.isDayIsToday(weatherObject.date)) {
+              return (
+            <div className="actual-today-weather-container">
+              <WeatherTodayData key={index} weather={weatherObject} />
+              </div>
+              )
+            } else {
+              return <div> </div>
+            }
           })}
         </div>
       </div>
