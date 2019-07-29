@@ -5,25 +5,25 @@ class WeatherOtherDayData extends Component {
     render() {
         return (
             <div className="other-day-weather">
-                <p>
+                <div className="day-name">
 
                     {this.props.isToday ? "Today" : this.props.getNameOfTheDay(this.props.weather.date)}
 
-                </p>
-
-                {this.props.displayAssets(this.props.weather.type)}
-
-                <div className="temperatures">
-                    <p>
-                        {this.props.changeCelciusToFar(this.props.weather.temperature)} <sup>°F</sup>
-                    </p>
-                    <p>
-                        {this.props.weather.temperature}<sup>°C</sup>
-                    </p>
                 </div>
-                <p>
+                <div className="weather-img">
+                    {this.props.displayAssets(this.props.weather.type)}
+                </div>
+                <div className="temperatures">
+                    <div className="farenheit-degrees">
+                        {this.props.changeCelciusToFar(this.props.weather.temperature)}<sup>°</sup>
+                    </div>
+                    <div className="celcius-degrees">
+                        {this.props.weather.temperature}<sup>°</sup>
+                    </div>
+                </div>
+                <div className="pollen">
                     Pollen {this.props.weather.pollenCount}
-                </p>
+                </div>
             </div>
         );
     }

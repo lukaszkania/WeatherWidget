@@ -56,10 +56,10 @@ class WeatherTodayData extends Component {
                         </div>
                     </div>
                     <div className="details-container">
-                        <p>Precipitation: {this.props.weather.precipitation}%</p>
-                        <p>Humidity: {this.props.weather.humidity}%</p>
-                        <p>Wind: {this.props.weather.windInfo.speed} mph {this.props.weather.windInfo.direction}</p>
-                        <p>Pollen Count: {this.props.weather.pollenCount}</p>
+                        <p>Precipitation: <span>{this.props.weather.precipitation}%</span></p>
+                        <p>Humidity: <span>{this.props.weather.humidity}%</span></p>
+                        <p>Wind: <span>{this.props.weather.windInfo.speed} mph {this.props.weather.windInfo.direction}</span></p>
+                        <p>Pollen Count: <span>{this.props.weather.pollenCount}</span></p>
                     </div>
                 </div>
             </>

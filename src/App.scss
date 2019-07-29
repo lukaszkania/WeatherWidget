@@ -13,19 +13,26 @@
     justify-content: center;
     align-items: stretch;
     align-content: stretch;
-    width: 80%;
+    width: 55vw;
     border: 1px gray solid;
+
+    p {
+        margin-bottom: 0;
+    }
 
 
     .dropdown {
         margin: 0 10px;
+        position: relative;
+        left: 0;
+        top: 0;
 
         button {
             color: black;
             background-color: white;
             border: 0;
             padding: 0;
-            font-size: 40px;
+            font-size: 50px;
             font-weight: 600;
             letter-spacing: 2px;
         }
@@ -83,6 +90,7 @@
             justify-content: flex-start;
             align-items: center;
             align-content: stretch;
+            color: gray;
 
             .temperature-and-asset-container {
 
@@ -93,11 +101,15 @@
                 align-items: stretch;
                 align-content: stretch;
 
+
                 p {}
 
                 .temperature-and-asset {
 
-                    p {}
+
+                    p {
+                        color: black;
+                    }
 
                     .img-and-p {
                         display: flex;
@@ -107,19 +119,47 @@
                         align-items: stretch;
                         align-content: stretch;
 
-                        img {}
+
+                        img {
+                            margin-top: 10px;
+                        }
 
                         p {
                             margin-bottom: 0;
+                            color: black;
+                            font-size: 40px;
+                            margin-left: 8px;
+
+                            sup {
+                                color: gray;
+
+                                sup {
+                                    vertical-align: top;
+                                    position: relative;
+                                    top: -0.5em;
+                                }
+                            }
                         }
                     }
                 }
             }
 
             .details-container {
-                margin: 15vh 0 0 15vw;
+                margin: 15vh 0 0 10vw;
 
-                p {}
+                p {
+
+                    span {
+                        color: black;
+                        margin: 0;
+                    }
+
+
+                }
+
+                p:last-child {
+                    margin-bottom: 20px;
+                }
             }
         }
     }
@@ -136,9 +176,13 @@
             margin: 10px 40px 0 10px;
             text-align: center;
 
-            p {}
+            .day-name {
+                font-weight: 600;
+            }
 
-            img {}
+            .weather-img {
+                img {}
+            }
 
             .temperatures {
                 display: flex;
@@ -148,11 +192,264 @@
                 align-items: center;
                 align-content: stretch;
 
-                p {
-                    sub {}
+                .farenheit-degrees {
+                    color: black;
                 }
+
+                .celcius-degrees {
+                    color: gray;
+                    margin-left: 2px;
+                }
+
+            }
+
+            .pollen {
+                color: gray;
+                margin-bottom: 10px;
             }
         }
     }
 
+}
+
+@media (max-width:760px) {
+
+    *,
+    :before,
+    :after {
+        box-sizing: border-box; // habit
+        margin: 0;
+        padding: 0;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: stretch;
+        align-content: stretch;
+        width: 95vw;
+        border: 1px gray solid;
+
+        p {
+            margin-bottom: 0;
+        }
+
+
+        .dropdown {
+            margin: 0 10px;
+            position: relative;
+            left: 0;
+            top: 0;
+
+            button {
+                color: black;
+                background-color: white;
+                border: 0;
+                padding: 0;
+                font-size: 50px;
+                font-weight: 600;
+                letter-spacing: 2px;
+            }
+
+            .btn-primary.focus,
+            .btn-primary:focus {
+                box-shadow: none;
+            }
+
+            button:focus {
+                color: black;
+                background-color: white;
+                border: 0;
+                padding: 0;
+
+            }
+
+            button:active {
+                color: black;
+                background-color: white;
+                border: 0;
+                padding: 0;
+
+            }
+
+            button::after {
+                color: black;
+                background-color: white;
+                border: 0;
+                padding: 0;
+            }
+
+            .show dropdown {
+                border: 0;
+                margin: 0;
+
+                button {
+                    background-color: white;
+                    padding: 0;
+                }
+
+                dropdown-menu show {
+                    a {}
+                }
+            }
+        }
+
+        .weather-container {
+            margin: 0 10px;
+
+            .actual-today-weather-container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                align-items: center;
+                align-content: stretch;
+                color: gray;
+
+                .temperature-and-asset-container {
+
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    justify-content: flex-start;
+                    align-items: stretch;
+                    align-content: stretch;
+
+
+                    p {}
+
+                    .temperature-and-asset {
+
+
+                        p {
+                            color: black;
+                        }
+
+                        .img-and-p {
+                            display: flex;
+                            flex-direction: row;
+                            flex-wrap: nowrap;
+                            justify-content: flex-start;
+                            align-items: stretch;
+                            align-content: stretch;
+
+
+                            img {
+                                margin-top: 10px;
+                            }
+
+                            p {
+                                margin-bottom: 0;
+                                color: black;
+                                font-size: 40px;
+                                margin-left: 8px;
+
+                                sup {
+                                    color: gray;
+
+                                    sup {
+                                        vertical-align: top;
+                                        position: relative;
+                                        top: -0.5em;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .details-container {
+                    margin: 15vh 0 0 10vw;
+
+                    p {
+
+                        span {
+                            color: black;
+                            margin: 0;
+                        }
+
+
+                    }
+
+                    p:last-child {
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+
+        .rest-of-week-weather-container {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: stretch;
+            align-content: stretch;
+
+            .other-day-weather {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: stretch;
+                align-content: stretch;
+                border-top: 1px gray solid;
+                margin: 0;
+
+
+                .day-name {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    justify-content: center;
+                    align-items: center;
+                    align-content: stretch;
+                    font-weight: 600;
+                    margin: 25px 5px;
+                }
+
+                .weather-img {
+
+                    width: 48px;
+                    height: 48px;
+                    margin: 5vh;
+
+                    img {}
+                }
+
+                .temperatures {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    justify-content: center;
+                    align-items: center;
+                    align-content: stretch;
+
+                    .farenheit-degrees {
+                        color: black;
+                    }
+
+                    .celcius-degrees {
+                        color: gray;
+                        margin-left: 2px;
+                    }
+
+                }
+
+                .pollen {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    justify-content: center;
+                    align-items: center;
+                    align-content: stretch;
+                    color: gray;
+                    margin: 0 20px 0 0;
+                }
+            }
+        }
+
+    }
 }
