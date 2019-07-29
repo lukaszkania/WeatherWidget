@@ -3,7 +3,8 @@ Project made as part of the recruitment process
 
 ## How to launch project
 1. Download repository by pasting "git clone https://github.com/lukaszkania/WeatherWidget" into terminal.
-2. Go to the downloaded directory in Your terminal and paste "npm run" 
+2. Go to the downloaded directory in Your terminal and paste "npm i" to install Node.js
+3. After instalation paste "npm run"
 
 ## Available Scripts
 
