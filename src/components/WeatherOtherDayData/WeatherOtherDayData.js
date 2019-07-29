@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 
 class WeatherOtherDayData extends Component {
     state = {}
+
     render() {
         return (
-            <div className="other-day-weather">
+            <div onClick={this.onClick} className="other-day-weather">
                 <div className="day-name">
 
                     {this.props.isToday ? "Today" : this.props.getNameOfTheDay(this.props.weather.date)}
