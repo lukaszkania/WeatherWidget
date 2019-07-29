@@ -2,8 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Project made as part of the recruitment process
 
 ## How to launch project
-⋅⋅* Download repository by pasting "git clone https://github.com/lukaszkania/WeatherWidget" into terminal.
-⋅⋅* Go to the downloaded directory in Your terminal and paste "npm run" 
+1. Download repository by pasting "git clone https://github.com/lukaszkania/WeatherWidget" into terminal.
+2. Go to the downloaded directory in Your terminal and paste "npm run" 
 
 ## Available Scripts
 
